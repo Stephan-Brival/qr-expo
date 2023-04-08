@@ -8,7 +8,7 @@
 <body>
 
 <div id="page-container">
-    <img id="page-image" src="/ph/img-ph.png" width="100%">
+    <img id="page-image" src="/img-ph.png" width="100%">
     <audio id="page-audio" controls>
         <source src="" type="audio/mpeg">
     </audio>
@@ -39,7 +39,8 @@
         clearTimeout(label.highlightTimeout);
         label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
         pageSlug = checkSlug (result.data);
-        scanner.stop();
+        updatePage();
+        hideScanner();
     }
 
     // ####### Web Cam Scanning #######
