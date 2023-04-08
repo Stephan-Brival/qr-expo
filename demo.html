@@ -16,15 +16,13 @@
 
 <div id="video-container">
     <video id="qr-video" width="100%"></video>
+    <b>Detected QR code: </b>
+    <span id="cam-qr-result">None</span>
+    <br>
+    <b>Last detected at: </b>
+    <span id="cam-qr-result-timestamp"></span>
 </div>
 
-<b>Detected QR code: </b>
-<span id="cam-qr-result">None</span>
-<br>
-<b>Last detected at: </b>
-<span id="cam-qr-result-timestamp"></span>
-
-<br>
 <button id="start-button">Start</button>
 <button id="stop-button">Stop</button>
 
@@ -34,7 +32,7 @@
     const videoContainer = document.getElementById('video-container');
     const camQrResult = document.getElementById('cam-qr-result');
     const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
-    const pagepreview = document.getElementById('preview');
+    const pageContainer = document.getElementById('page-container');
 
     function setResult(label, result) {
         console.log(result.data);
@@ -63,15 +61,32 @@
     window.scanner = scanner;
 
     document.getElementById('start-button').addEventListener('click', () => {
-        scanner.start();
+        showScanner();
     });
 
     document.getElementById('stop-button').addEventListener('click', () => {
-        scanner.stop();
+        hideScanner();
     });
+
+    function showScanner() {
+
+        pageContainer.style.display = "none";
+        videoContainer.style.display = "block";
+        scanner.start();
+    }
+
+    function hideScanner() {
+        videoContainer.style.display = "none";
+        pageContainer.style.display = "block";
+        scanner.stop();
+    }
 </script>
 
 <style>
+   
+    body {
+        background-color: #121212;
+    }
     div {
         margin-bottom: 16px;
     }
