@@ -8,7 +8,7 @@
 <body>
 
 <div id="page-container">
-    <img id="page-image" src="" width="100%">
+    <img id="page-image" src="img-ph.png" width="100%">
     <audio id="page-player" controls>
         <source src="" type="audio/mpeg">
     </audio>
@@ -57,9 +57,6 @@
         highlightCodeOutline: true,
     });
 
-    // for debugging
-    window.scanner = scanner;
-
     document.getElementById('start-button').addEventListener('click', () => {
         showScanner();
     });
@@ -86,7 +83,9 @@
    
     body {
         background-color: #121212;
+        color: #fff;
     }
+
     div {
         margin-bottom: 16px;
     }
