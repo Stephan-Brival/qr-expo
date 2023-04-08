@@ -8,19 +8,16 @@
 <body>
 
 <div id="page-container">
-    <img id="page-image" src="img-ph.png" width="100%">
-    <audio id="page-player" controls>
+    <img id="page-image" src="/ph/img-ph.png" width="100%">
+    <audio id="page-audio" controls>
         <source src="" type="audio/mpeg">
     </audio>
 </div>   
 
 <div id="video-container">
     <video id="qr-video" width="100%"></video>
-    <b>Detected QR code: </b>
+    <b>QR code data: </b>
     <span id="cam-qr-result">None</span>
-    <br>
-    <b>Last detected at: </b>
-    <span id="cam-qr-result-timestamp"></span>
 </div>
 
 <button id="start-button">Start</button>
@@ -31,18 +28,17 @@
     const video = document.getElementById('qr-video');
     const videoContainer = document.getElementById('video-container');
     const camQrResult = document.getElementById('cam-qr-result');
-    const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
+    const pageImage = document.getElementById('page-image');
+    const pageAudio = document.getElementById('page-audio');
+    const pageSlug = "";
     const pageContainer = document.getElementById('page-container');
 
     function setResult(label, result) {
-        console.log(result.data);
         label.textContent = result.data;
-        camQrResultTimestamp.textContent = new Date().toString();
         label.style.color = 'teal';
         clearTimeout(label.highlightTimeout);
         label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
-        alert(result.data);
-        pagepreview.src = result.data;
+        pageSlug = checkSlug (result.data);
         scanner.stop();
     }
 
@@ -76,6 +72,17 @@
         videoContainer.style.display = "none";
         pageContainer.style.display = "block";
         scanner.stop();
+    }
+
+    function checkSlug(data) {
+        var urlParts = data.split('#');
+
+        return (urlParts.length > 1) ? urlParts[1] : "demo"; //or pageSlug
+    }
+
+    function updatePage() {
+        pageImage.src = `/${pageSlug}.png`;
+        pageAudio.src = `/${pageSlug}.mp3`;
     }
 </script>
 
