@@ -63,6 +63,12 @@
         hideScanner();
     });
 
+    var audioSelfEnded = false;
+
+    pageAudio.addEventListener('ended', () => {
+        audioSelfEnded = true;
+    });
+
         // for debugging
         window.scanner = scanner;
 
@@ -72,7 +78,7 @@
         videoContainer.style.display = "block";
         videoContainer.hidden = false;
         console.log("neededPaused?:"+!pageAudio.paused);
-        if(!pageAudio.paused){
+        if(!pageAudio.paused && !audioSelfEnded){
             scanMuted = true;
             pageAudio.pause();
         }
