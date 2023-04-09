@@ -87,21 +87,24 @@
 
     function checkSlug(data) {
         var urlParts = data.split('#');
-        console.log("check slug: "+urlParts[1]);
-        return (urlParts.length > 1) ? urlParts[1] : null;
+        pageSlug = (urlParts.length > 1) ? urlParts[1] : null;
     }
 
     function updatePage() {
+        console.log("slug update IN : "+pageSlug);
         if(pageSlug != null) {
             pageImage.src = `${pageSlug}.png`;
             pageAudio.src = `${pageSlug}.mp3`;
             pageAudio.hidden = false;
-        pageAudio.play();
+            pageAudio.play();
         }
+        console.log("slug update OUT : "+pageSlug);
     }
 
     function initPage() {
-        checkSlug(window.location.href);
+        var URL = window.location.href;
+        console.log("URL : "+URL);
+        checkSlug(URL);
         updatePage();
     }
 
