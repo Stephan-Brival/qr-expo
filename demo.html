@@ -77,12 +77,11 @@
         videoContainer.style.display = "none";
         pageContainer.style.display = "block";
         scanner.stop();
-        pageAudio.resume();
+        if(pageAudio.paused) pageAudio.play();
     }
 
     function checkSlug(data) {
         //var urlParts = data.split('#');
-        alert("check slug demo");
         return "demo";//(urlParts.length > 1) ? urlParts[1] : "demo"; //or pageSlug
     }
 
