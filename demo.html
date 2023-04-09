@@ -71,14 +71,12 @@
         pageContainer.style.display = "none";
         videoContainer.style.display = "block";
         videoContainer.hidden = false;
-        console.log("wasNotPaused?:"+!pageAudio.paused);
-        console.log("AND time>0?:"+pageAudio.currentime);
-        console.log(" should pause?:");
-        console.log(!pageAudio.paused && pageAudio.currentime > 0);
-        if(!pageAudio.paused && pageAudio.currentime > 0){
+        console.log("neededPaused?:"+!pageAudio.paused);
+        if(!pageAudio.paused){
             scanMuted = true;
+            pageAudio.pause();
         }
-        pageAudio.pause();
+        
     }
 
     function hideScanner() {
