@@ -71,10 +71,13 @@
         pageContainer.style.display = "none";
         videoContainer.style.display = "block";
         videoContainer.hidden = false;
-        console.log("wasNotPaused?:"+!pageAudio.paused+" AND time>0?:"+pageAudio.currentime >0+" should pause?:"+!pageAudio.paused && pageAudio.currentime >0);
+        console.log("wasNotPaused?:"+!pageAudio.paused);
+        console.log("AND time>0?:"+pageAudio.currentime >0);
+        console.log(" should pause?:"+!pageAudio.paused && pageAudio.currentime >0);
         if(!pageAudio.paused && pageAudio.currentime >0){
-            pageAudio.pause(); scanMuted = true;
-        } 
+            scanMuted = true;
+        }
+        pageAudio.pause();
     }
 
     function hideScanner() {
@@ -91,14 +94,13 @@
     }
 
     function updatePage() {
-        console.log("slug update IN : "+pageSlug);
+        console.log("slug in update : "+pageSlug);
         if(pageSlug != null) {
             pageImage.src = `${pageSlug}.png`;
             pageAudio.src = `${pageSlug}.mp3`;
             pageAudio.hidden = false;
             pageAudio.play();
         }
-        console.log("slug update OUT : "+pageSlug);
     }
 
     function initPage() {
