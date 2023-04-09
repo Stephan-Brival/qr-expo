@@ -83,17 +83,26 @@
     }
 
     function checkSlug(data) {
-        //var urlParts = data.split('#');
-        return "demo";//(urlParts.length > 1) ? urlParts[1] : "demo"; //or pageSlug
+        var urlParts = data.split('#');
+        console.log("check slug: "+urlParts[1]);
+        return (urlParts.length > 1) ? urlParts[1] : null;
     }
 
     function updatePage() {
-        pageImage.src = `${pageSlug}.png`;
-        pageAudio.src = `${pageSlug}.mp3`;
-        pageAudio.hidden = false;
-        pageAudio.play();
-        console.log("slug: "+pageSlug+"img: "+pageImage.src+" & audio: "+pageAudio.src);
+        if(pageSlug != null) {
+            pageImage.src = `${pageSlug}.png`;
+            pageAudio.src = `${pageSlug}.mp3`;
+            pageAudio.hidden = false;
+            pageAudio.play();
+        }
     }
+
+    function initPage() {
+        checkSlug(window.location.href);
+        updatePage();
+    }
+
+    initPage();
 </script>
 
 <style>
