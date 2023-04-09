@@ -62,6 +62,9 @@
         hideScanner();
     });
 
+        // for debugging
+        window.scanner = scanner;
+
     function showScanner() {
 
         pageContainer.style.display = "none";
@@ -76,9 +79,9 @@
     }
 
     function checkSlug(data) {
-        var urlParts = data.split('#');
-
-        return (urlParts.length > 1) ? urlParts[1] : "demo"; //or pageSlug
+        //var urlParts = data.split('#');
+        alert("check slug demo");
+        return "demo";//(urlParts.length > 1) ? urlParts[1] : "demo"; //or pageSlug
     }
 
     function updatePage() {
