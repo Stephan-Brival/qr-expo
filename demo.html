@@ -14,7 +14,7 @@
     </audio>
 </div>   
 
-<div id="video-container">
+<div id="video-container" hidden>
     <video id="qr-video" width="100%"></video>
     <b>QR code data: </b>
     <span id="cam-qr-result">None</span>
@@ -70,6 +70,7 @@
         scanner.start();
         pageContainer.style.display = "none";
         videoContainer.style.display = "block";
+        videoContainer.hidden = false;
         console.log("wasNotPaused?:"+!pageAudio.paused+" AND time>0?:"+pageAudio.currentime >0+" should pause?:"+!pageAudio.paused && pageAudio.currentime >0);
         if(!pageAudio.paused && pageAudio.currentime >0){
             pageAudio.pause(); scanMuted = true;
@@ -77,6 +78,7 @@
     }
 
     function hideScanner() {
+        videoContainer.hidden = true;
         videoContainer.style.display = "none";
         pageContainer.style.display = "block";
         scanner.stop();
@@ -148,10 +150,7 @@
     hr {
         margin-top: 32px;
     }
-    input[type="file"] {
-        display: block;
-        margin-bottom: 16px;
-    }
+
 </style>
 </body>
 </html>
