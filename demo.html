@@ -70,6 +70,7 @@
         scanner.start();
         pageContainer.style.display = "none";
         videoContainer.style.display = "block";
+        console.log("wasNotPaused?:"+!pageAudio.paused+" AND time>0?:"+pageAudio.currentime >0+" should pause?:"+!pageAudio.paused && pageAudio.currentime >0);
         if(!pageAudio.paused && pageAudio.currentime >0){
             pageAudio.pause(); scanMuted = true;
         } 
@@ -93,7 +94,7 @@
             pageImage.src = `${pageSlug}.png`;
             pageAudio.src = `${pageSlug}.mp3`;
             pageAudio.hidden = false;
-            pageAudio.play();
+        pageAudio.play();
         }
     }
 
