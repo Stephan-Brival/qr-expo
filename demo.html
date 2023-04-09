@@ -65,9 +65,9 @@
 
     var audioSelfEnded = false;
 
-    pageAudio.addEventListener('ended', () => {
+    /**pageAudio.addEventListener('ended', () => {
         audioSelfEnded = true;
-    });
+    });*/
 
         // for debugging
         window.scanner = scanner;
@@ -78,7 +78,7 @@
         videoContainer.style.display = "block";
         videoContainer.hidden = false;
         console.log("neededPaused?:"+!pageAudio.paused);
-        if(!pageAudio.paused && !audioSelfEnded){
+        if(!pageAudio.paused){
             scanMuted = true;
             pageAudio.pause();
         }
@@ -90,7 +90,10 @@
         videoContainer.style.display = "none";
         pageContainer.style.display = "block";
         scanner.stop();
-        if(scanMuted) pageAudio.play();
+        if(scanMuted) {
+            scanMuted = false;
+            pageAudio.play();
+        }
     }
 
     function checkSlug(data) {
