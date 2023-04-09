@@ -69,6 +69,7 @@
 
         pageContainer.style.display = "none";
         videoContainer.style.display = "block";
+        pageAudio.pause();
         scanner.start();
     }
 
@@ -76,6 +77,7 @@
         videoContainer.style.display = "none";
         pageContainer.style.display = "block";
         scanner.stop();
+        pageAudio.resume();
     }
 
     function checkSlug(data) {
@@ -87,8 +89,7 @@
     function updatePage() {
         pageImage.src = `${pageSlug}.png`;
         pageAudio.src = `${pageSlug}.mp3`;
-        console.log("img: "+pageImage.src+" & audio: "+pageAudio.src);
-        alert("Update - img: "+pageImage.src+" & audio: "+pageAudio.src);
+        console.log("slug: "+pageSlug+"img: "+pageImage.src+" & audio: "+pageAudio.src);
     }
 </script>
 
