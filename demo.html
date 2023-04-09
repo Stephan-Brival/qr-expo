@@ -32,6 +32,7 @@
     const pageAudio = document.getElementById('page-audio');
     const pageContainer = document.getElementById('page-container');
     var pageSlug = "demo";
+    var scanMuted = false;
 
     function setResult(label, result) {
         label.textContent = result.data;
@@ -66,18 +67,19 @@
         window.scanner = scanner;
 
     function showScanner() {
-
+        scanner.start();
         pageContainer.style.display = "none";
         videoContainer.style.display = "block";
-        pageAudio.pause();
-        scanner.start();
+        if(!pageAudio.paused || pageAudio.currentime){
+            pageAudio.pause(); scanMuted = true;
+        } 
     }
 
     function hideScanner() {
         videoContainer.style.display = "none";
         pageContainer.style.display = "block";
         scanner.stop();
-        if(pageAudio.paused) pageAudio.play();
+        if(scanMuted) pageAudio.play();
     }
 
     function checkSlug(data) {
