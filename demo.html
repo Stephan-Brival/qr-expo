@@ -72,9 +72,10 @@
         videoContainer.style.display = "block";
         videoContainer.hidden = false;
         console.log("wasNotPaused?:"+!pageAudio.paused);
-        console.log("AND time>0?:"+pageAudio.currentime >0);
-        console.log(" should pause?:"+!pageAudio.paused && pageAudio.currentime >0);
-        if(!pageAudio.paused && pageAudio.currentime >0){
+        console.log("AND time>0?:"+pageAudio.currentime);
+        console.log(" should pause?:");
+        console.log(!pageAudio.paused && pageAudio.currentime > 0);
+        if(!pageAudio.paused && pageAudio.currentime > 0){
             scanMuted = true;
         }
         pageAudio.pause();
@@ -99,7 +100,9 @@
             pageImage.src = `${pageSlug}.png`;
             pageAudio.src = `${pageSlug}.mp3`;
             pageAudio.hidden = false;
+            console.log("InitAudioPaused?:"+pageAudio.paused);
             pageAudio.play();
+            console.log("InitAudioPlayPaused?:"+pageAudio.paused);
         }
     }
 
